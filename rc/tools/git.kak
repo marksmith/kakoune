@@ -158,8 +158,6 @@ define-command -params 1.. \
     }
 
     show_git_cmd_output() {
-        local filetype
-
         case "$1" in
            diff) filetype=git-diff ;;
            show) filetype=git-log ;;
