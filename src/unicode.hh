@@ -69,6 +69,11 @@ inline bool is_basic_digit(Codepoint c) noexcept
     return c >= '0' and c <= '9';
 }
 
+inline bool is_digit(Codepoint c) noexcept
+{
+    return c < 128 ? is_basic_digit(c) : iswdigit((wchar_t)c);
+}
+
 enum WordType { Word, WORD };
 
 template<WordType word_type = Word>

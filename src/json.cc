@@ -40,7 +40,7 @@ String to_json(StringView str)
     return res;
 }
 
-static bool is_digit(char c) { return c >= '0' and c <= '9'; }
+static bool is_json_digit(char c) { return c >= '0' and c <= '9'; }
 
 static constexpr size_t max_parsing_depth = 100;
 
@@ -52,10 +52,10 @@ JsonResult parse_json_impl(const char* pos, const char* end, size_t depth)
     if (depth >= max_parsing_depth)
         throw runtime_error("maximum parsing depth reached");
 
-    if (is_digit(*pos) or *pos == '-')
+    if (is_json_digit(*pos) or *pos == '-')
     {
         auto digit_end = pos + 1;
-        skip_while(digit_end, end, is_digit);
+        skip_while(digit_end, end, is_json_digit);
         return { Value{str_to_int({pos, digit_end})}, digit_end };
     }
     if (end - pos > 4 and StringView{pos, pos+4} == "true")

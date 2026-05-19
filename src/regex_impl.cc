@@ -1190,7 +1190,7 @@ bool is_ctype(CharacterType ctype, Codepoint cp)
     return check(CharacterType::Word, CharacterType::NotWord, [](Codepoint cp) { return is_word(cp); }) or
            check(CharacterType::Whitespace, CharacterType::NotWhitespace, is_blank) or
            check(CharacterType::HorizontalWhitespace, CharacterType::NotHorizontalWhitespace, is_horizontal_blank) or
-           check(CharacterType::Digit, CharacterType::NotDigit, iswdigit);
+           check(CharacterType::Digit, CharacterType::NotDigit, is_digit);
 }
 
 namespace
