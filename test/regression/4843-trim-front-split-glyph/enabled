@@ -1,2 +1,2 @@
 #!/bin/sh
-[ $(printf "⌛" | wc -m) = '1' ] && locale | grep LC_CTYPE | grep -qi 'utf-*8'
+[ $(printf "中" | wc -m) = '1' ] && locale | grep LC_CTYPE | grep -qi 'utf-*8'
