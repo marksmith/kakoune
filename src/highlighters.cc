@@ -1318,7 +1318,7 @@ void expand_unprintable(HighlightContext context, DisplayBuffer& display_buffer,
             {
                 auto next = it;
                 Codepoint cp = utf8::read_codepoint(next, end);
-                if (cp != '\n' and (cp < ' ' or cp > '~') and not iswprint((wchar_t)cp))
+                if (cp != '\n' and (cp < ' ' or cp > '~') and not iswprint(codepoint_to_wchar(cp)))
                 {
                     if (ByteCount pos(it - line_data); pos != begin.column)
                         atom_it = ++line.split(atom_it, {begin.line, pos});
